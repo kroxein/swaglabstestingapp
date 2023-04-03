@@ -1,20 +1,23 @@
 package org.swaglabs.pages;
 
-public class BasePage {
+import com.codeborne.selenide.SelenideElement;
+import org.swaglabs.body.Header;
 
+import static com.codeborne.selenide.Selenide.$;
+
+public class BasePage extends Page{
+private final Header header;
     private final String title = "Swag Labs";
     private final String logo;
-    private final String username;
-    private final String password;
-    private final String loginButton;
+    private final SelenideElement username = $("#user-name");
+    private final SelenideElement password =  $("#password");
+    private final SelenideElement loginButton = $("#login-button");
     private final String robotIcon;
 
     public BasePage() {
         this.logo = "SWAG LABS";
-        this.username = "user-name";
-        this.password = "password";
-        this.loginButton = "login";
         this.robotIcon = "bot_column";
+        header = new Header();
     }
 
     /**
@@ -45,5 +48,34 @@ public class BasePage {
 
     public void validateThatRobotIconIsDisplayedOnScreen() {
         System.out.println ( "Verify that robot icon is : " + robotIcon );
+    }
+
+
+
+    public void typeOnUserNameField(String userToType) {
+        this.username.sendKeys ( userToType );
+    }
+    /**
+     * Clicks
+     */
+    public void clickOnUsernameField() {
+        this.username.click ();
+    }
+
+    public void clickOnPasswordField() {
+        this.password.click();
+    }
+
+
+    public void typeOnPasswordField(String passwordToType) {
+        this.password.sendKeys( passwordToType );
+    }
+
+    public void clickOnLoginButton() {
+        this.loginButton.click();
+    }
+
+    public void validateHeaderContainsCartIcon() {
+        this.header.validateHeaderContainsCartIcon();
     }
 }
