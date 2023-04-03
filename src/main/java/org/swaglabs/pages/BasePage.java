@@ -5,19 +5,22 @@ import org.swaglabs.body.Header;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class BasePage extends Page{
-private final Header header;
+public class BasePage extends Page {
+    private final Header header;
     private final String title = "Swag Labs";
-    private final String logo;
-    private final SelenideElement username = $("#user-name");
-    private final SelenideElement password =  $("#password");
-    private final SelenideElement loginButton = $("#login-button");
-    private final String robotIcon;
+    private final String logo = "SWAG LABS";
+    private final SelenideElement username = $ ( "#user-name" );
+    private final SelenideElement password = $ ( "#password" );
+    private final SelenideElement loginButton = $ ( "#login-button" );
+
+
+
+    private final SelenideElement robotIcon = $(".bot_column");
 
     public BasePage() {
-        this.logo = "SWAG LABS";
-        this.robotIcon = "bot_column";
-        header = new Header();
+
+
+        header = new Header ();
     }
 
     /**
@@ -25,6 +28,27 @@ private final Header header;
      */
     public String getTitle() {
         return title;
+    }
+
+    public String getLoginLogo() {
+        return logo;
+
+
+    }
+
+    public SelenideElement getUsername() {
+        return username;
+    }
+
+    public SelenideElement getPassword() {
+        return password;
+    }
+
+    public SelenideElement getLoginButton() {
+        return loginButton;
+    }
+    public SelenideElement getRobotIcon() {
+        return robotIcon;
     }
 
     /**
@@ -51,10 +75,10 @@ private final Header header;
     }
 
 
-
     public void typeOnUserNameField(String userToType) {
         this.username.sendKeys ( userToType );
     }
+
     /**
      * Clicks
      */
@@ -63,19 +87,21 @@ private final Header header;
     }
 
     public void clickOnPasswordField() {
-        this.password.click();
+        this.password.click ();
     }
 
 
     public void typeOnPasswordField(String passwordToType) {
-        this.password.sendKeys( passwordToType );
+        this.password.sendKeys ( passwordToType );
     }
 
     public void clickOnLoginButton() {
-        this.loginButton.click();
+        this.loginButton.click ();
     }
 
     public void validateHeaderContainsCartIcon() {
-        this.header.validateHeaderContainsCartIcon();
+        this.header.validateHeaderContainsCartIcon ();
     }
+
+
 }
