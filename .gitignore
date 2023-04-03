@@ -1,0 +1,8 @@
+.idea/
+target/
+.allure/
+out/
+*.iml
+allure-results/
+build/
+browsers.json/
