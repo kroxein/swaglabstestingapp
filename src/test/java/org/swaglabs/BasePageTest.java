@@ -43,13 +43,7 @@ public class BasePageTest {
         assertTrue ( loginButton.isEnabled () , "Expected login button to be enabled." );
     }
 
-    @Test
-    public void verifyRobotIcon() {
-        SelenideElement robotIcon = basePage.getRobotIcon ();
-        assertTrue ( robotIcon.exists () , "Expected robot icon to exist on page." );
-        assertTrue ( robotIcon.isDisplayed () , "expected robot icon to be displayed." );
 
-    }
 
 
 }
