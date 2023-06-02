@@ -1,4 +1,4 @@
-package org.swaglabs;
+package org.swaglabs.components;
 
 import com.codeborne.selenide.SelenideElement;
 import org.swaglabs.pages.BasePage;

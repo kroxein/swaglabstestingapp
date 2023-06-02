@@ -58,8 +58,9 @@ public class BasePage extends Page {
         System.out.println ( "Verify that logo is : " + logo );
     }
 
-    public void validateThatUsernameFieldIsDisplayedOnScreen() {
+    public boolean validateThatUsernameFieldIsDisplayedOnScreen() {
         System.out.println ( "Verify that username field is : " + username );
+        return this.username.exists() && this.username.isDisplayed();
     }
 
     public void validateThatPasswordFieldIsDisplayedOnScreen() {
@@ -90,7 +91,9 @@ public class BasePage extends Page {
         this.password.click ();
     }
 
-
+    /**
+     * Types
+     */
     public void typeOnPasswordField(String passwordToType) {
         this.password.sendKeys ( passwordToType );
     }
@@ -99,9 +102,7 @@ public class BasePage extends Page {
         this.loginButton.click ();
     }
 
-    public void validateHeaderContainsCartIcon() {
-        this.header.validateHeaderContainsCartIcon ();
-    }
+
 
 
 }

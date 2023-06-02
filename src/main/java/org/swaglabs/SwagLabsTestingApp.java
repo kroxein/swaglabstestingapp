@@ -19,7 +19,7 @@ public class SwagLabsTestingApp {
         basePage.clickOnPasswordField ();
         basePage.typeOnPasswordField ( "secret_sauce" );
         basePage.clickOnLoginButton ();
-        basePage.validateHeaderContainsCartIcon ();
+
 
     }
 
