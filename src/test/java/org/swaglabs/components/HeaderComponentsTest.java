@@ -46,7 +46,7 @@ public class HeaderComponentsTest {
     }
 
     @Test
-    public void verifBurgerMenu() {
+    public void verifyBurgerMenu() {
         basePage.clickOnUsernameField();
         String user = "standard_user";
         basePage.typeOnUserNameField(user);
