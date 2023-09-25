@@ -1,10 +1,12 @@
 package org.swaglabs;
 
 import org.swaglabs.body.Header;
+import org.swaglabs.dataprovider.LoginDataProvider;
 import org.swaglabs.pages.BasePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static org.testng.Assert.*;
 
 public class LoginTest {
@@ -12,20 +14,31 @@ public class LoginTest {
     BasePage basePage = new BasePage();
     Header header = new Header();
 
-    @Test
-    public void userCanLoginWithValidUsers() {
+    @Test(testName = "User can login with valid username and valid password.",
+            description = "This test verify if user can login with valid username (standard_user,problem_user,performance_glitch_user ) and valid password (secret_sauce).",
+            dataProvider = "LoginDataProvider", dataProviderClass = LoginDataProvider.class)
+
+    public void userCanLoginWithValidUsers(Account account) {
         basePage.clickOnUsernameField();
-        String user = "standard_user";
-        basePage.typeOnUserNameField(user);
+        basePage.typeOnUserNameField(account.getUsername());
         basePage.clickOnPasswordField();
-        basePage.typeOnPasswordField("secret_sauce");
+        basePage.typeOnPasswordField(account.getPassword());
         basePage.clickOnLoginButton();
-        assertTrue(header.validateLogoIsDisplayedOnScreen(), "Expected Logo to be displayed on screen.");
+        assertTrue(header.validateBurgerMenuIsDisplayed());
         header.clickOnBurgerMenu();
         header.clickOnLogoutButton();
         assertTrue(basePage.validateThatUsernameFieldIsDisplayedOnScreen(), "Expected username field to be displayed on screen.");
-
+        basePage.clickOnUsernameField();
+        basePage.clearUsernameField();
+        basePage.clickOnPasswordField();
+        basePage.clearPasswordField();
+        assertTrue(basePage.validateUsernameFieldIsEmpty());
+        assertTrue(basePage.validatePasswordFieldIsEmpty());
     }
+
+
+
+
 
     @Test(testName = "User can't login with locked user.",
             description = "This test verify if user can't login with locked user.")
@@ -57,6 +70,10 @@ public class LoginTest {
         basePage.clickOnLoginButton();
         assertTrue(basePage.validateUsernameIsRequiredMessageIsDisplayedOnScreen(), "Expected message: Username is required to be displayed on screen.");
         basePage.clickOnErrorButton();
+        basePage.clickOnUsernameField();
+        basePage.clearUsernameField();
+        basePage.clickOnPasswordField();
+        basePage.clearPasswordField();
         assertTrue(basePage.validateUsernameFieldIsEmpty());
         assertTrue(basePage.validatePasswordFieldIsEmpty());
     }
@@ -74,6 +91,8 @@ public class LoginTest {
         basePage.clickOnErrorButton();
         basePage.clickOnUsernameField();
         basePage.clearUsernameField();
+        basePage.clickOnPasswordField();
+        basePage.clearPasswordField();
         assertTrue(basePage.validateUsernameFieldIsEmpty());
         assertTrue(basePage.validatePasswordFieldIsEmpty());
 
@@ -89,6 +108,8 @@ public class LoginTest {
         basePage.clickOnLoginButton();
         assertTrue(basePage.validateUsernameIsRequiredMessageIsDisplayedOnScreen(), "Expected message: Username is required to be displayed on screen.");
         basePage.clickOnErrorButton();
+        basePage.clickOnUsernameField();
+        basePage.clearUsernameField();
         basePage.clickOnPasswordField();
         basePage.clearPasswordField();
         assertTrue(basePage.validateUsernameFieldIsEmpty());
@@ -164,6 +185,8 @@ public class LoginTest {
         basePage.clickOnErrorButton();
         basePage.clickOnUsernameField();
         basePage.clearUsernameField();
+        basePage.clickOnPasswordField();
+        basePage.clearPasswordField();
         assertTrue(basePage.validateUsernameFieldIsEmpty());
         assertTrue(basePage.validatePasswordFieldIsEmpty());
 
@@ -180,6 +203,8 @@ public class LoginTest {
         basePage.clickOnLoginButton();
         assertTrue(basePage.validateUsernameIsRequiredMessageIsDisplayedOnScreen(), "Expected message: Username is required to be displayed on screen.");
         basePage.clickOnErrorButton();
+        basePage.clickOnUsernameField();
+        basePage.clearUsernameField();
         basePage.clickOnPasswordField();
         basePage.clearPasswordField();
         assertTrue(basePage.validateUsernameFieldIsEmpty());

@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.swaglabs.body.Header;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class BasePage extends Page {
     private final Header header;
@@ -115,6 +116,10 @@ public class BasePage extends Page {
     public void clickOnErrorButton() {
         this.errorButton.click();
     }
+    public void clickOnLoginButton() {
+        this.loginButton.click();
+        sleep(300);
+    }
 
     /**
      * Types
@@ -123,9 +128,7 @@ public class BasePage extends Page {
         this.password.sendKeys(passwordToType);
     }
 
-    public void clickOnLoginButton() {
-        this.loginButton.click();
-    }
+
 
     public void typeOnUserNameField(String userToType) {
         this.username.sendKeys(userToType);

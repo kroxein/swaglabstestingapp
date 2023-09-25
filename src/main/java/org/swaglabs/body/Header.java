@@ -3,6 +3,7 @@ package org.swaglabs.body;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class Header {
 
@@ -49,6 +50,7 @@ public class Header {
 
     public void clickOnLogoutButton() {
         this.logoutButton.click();
+        sleep(300);
     }
 
 
