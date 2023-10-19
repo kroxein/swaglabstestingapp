@@ -11,7 +11,7 @@ public class Header {
     private final SelenideElement cartIcon = $("#shopping_cart_container");
     private final SelenideElement burgerMenu = $("#react-burger-menu-btn");
     private final SelenideElement logoutButton = $("#logout_sidebar_link");
-
+    private final SelenideElement productTitle =  $(".title");
 
     public Header() {
     }
@@ -28,8 +28,11 @@ public class Header {
 
     public boolean validateBurgerMenuIsDisplayed() {
         return this.burgerMenu.exists() && this.burgerMenu.isDisplayed();
-    }
 
+    }
+    public boolean validateProductTitleIsDisplayed(){
+        return  this.productTitle.exists() && this.productTitle.isDisplayed();
+    }
     /**
      * Validators - enabled
      */
